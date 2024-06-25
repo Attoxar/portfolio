@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Rage Gaming{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+            <li><a href="{% url 'shop' %}">Shop</a></li>
+            <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+            <li><a href="{% url 'about_me_page' %}">About Me</a></li>
+            <li><a href="{% url 'multimedia' %}">Multimedia</a></li>
+            {% if user.is_authenticated %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Field Intelligence Gathering</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'dns_lookup' %}">DNS Lookup</a></li>
+                        <li><a href="{% url 'port_scan' %}">Port Scan</a></li>
+                        <li><a href="{% url 'traceroute' %}">Traceroute</a></li>
+                        <li><a href="{% url 'web_scan' %}">Web Scan</a></li>
+                        <li><a href="{% url 'detect_os' %}">Detect OS</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const dropdownMenu = this.nextElementSibling;
+                if (dropdownMenu.style.display === 'block') {
+                    dropdownMenu.style.display = 'none';
+                } else {
+                console.log(dropdownMenu.style.display);
+                    dropdownMenu.style.display = 'block';
+                }
+            });
+        });
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown-toggle')) {
+                const dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(dropdown => {
+                    if (dropdown.style.display === 'block') {
+                        dropdown.style.display = 'none';
+                    }
+                });
+            }
+        }
+    });
+    </script>
+</body>
+</html>

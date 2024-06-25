@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Port Scan</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Scan Ports</button>
+    </form>
+
+    {% if result %}
+        <h2>Open Ports:</h2>
+        <ul>
+            {% for port in result %}
+                <li>Port {{ port }} is open</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}

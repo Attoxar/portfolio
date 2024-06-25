@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Web Vulnerability Scan</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Scan Web Vulnerabilities</button>
+    </form>
+
+    {% if result %}
+        <h2>Vulnerabilities:</h2>
+        <ul>
+            {% for vulnerability in result %}
+                <li>{{ vulnerability }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}

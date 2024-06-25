@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>DNS Lookup</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Lookup DNS</button>
+    </form>
+
+    {% if result %}
+        <h2>IP Address:</h2>
+        <p>{{ result }}</p>
+    {% endif %}
+
+{% endblock %}

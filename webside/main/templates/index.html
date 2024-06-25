@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scanner Home</title>
+</head>
+<body>
+    <h1>Scanner Home</h1>
+    <ul>
+        <li><a href="{% url 'port_scan' %}">Port Scan</a></li>
+        <li><a href="{% url 'web_scan' %}">Web Vulnerability Scan</a></li>
+        <li><a href="{% url 'dns_lookup' %}">DNS Lookup</a></li>
+        <li><a href="{% url 'traceroute' %}">Traceroute</a></li>
+        <li><a href="{% url 'detect_os' %}">OS Detection</a></li>
+    </ul>
+</body>
+</html>

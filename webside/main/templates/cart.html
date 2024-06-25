@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="middle-content">
+    <h1>Shopping Cart</h1>
+    <ul>
+        {% for item in order_items %}
+            <li>
+                {{ item.product.name }} - Quantity: {{ item.quantity }} - Price: ${{ item.get_total_item_price }}
+                <form action="{% url 'remove_from_cart' item.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Remove</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Total Price: ${{ total_price }}</p>
+
+    <a href="{% url 'checkout' %}">Proceed to Checkout</a>
+</div>
+{% endblock %}
