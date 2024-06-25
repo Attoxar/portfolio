@@ -39,7 +39,7 @@
         {% endblock %}
     </div>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+       document.addEventListener('DOMContentLoaded', function() {
         const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', function(e) {
@@ -48,7 +48,6 @@
                 if (dropdownMenu.style.display === 'block') {
                     dropdownMenu.style.display = 'none';
                 } else {
-                console.log(dropdownMenu.style.display);
                     dropdownMenu.style.display = 'block';
                 }
             });
