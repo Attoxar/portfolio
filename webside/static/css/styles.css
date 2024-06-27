@@ -20,6 +20,13 @@ time, mark, audio, video {
     box-sizing: border-box;
 }
 
+.cart-item-image {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
 body {
     background-image: url('../images/background.jpg');
     background-size: cover;
@@ -27,9 +34,44 @@ body {
     margin: 0;
 }
 
+.checkout-container {
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.checkout-content {
+    background-color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.cart-container {
+    background-color: black;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
+    margin: 20px;
+    padding: 20px;
+}
+
+.cart-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: black;
+}
+
+
 nav {
     background-color: #333;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .navbar ul {
@@ -41,8 +83,8 @@ nav {
 
 .navbar li {
     position: relative;
-    z-index: 1000;
 }
+
 .navbar li a {
     color: #f2f2f2;
     text-align: center;
@@ -66,7 +108,7 @@ nav {
     list-style: none;
     padding: 0;
     margin: 0;
-    z-index: 1001; /* Ensure dropdown has a higher z-index than the nav */
+    z-index: 1000;
 }
 
 .dropdown-menu li {
@@ -84,14 +126,11 @@ nav {
     background-color: #555;
 }
 
-.navbar li:hover > .dropdown-menu {
-    display: block;
-}
-
 .dropdown-toggle::after {
     content: " ▼";
     font-size: 0.8em;
 }
+
 
 #about-me {
     margin: 20px;
@@ -108,7 +147,7 @@ nav {
     margin: 20px;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
-    color: black;
+    color: white;
 }
 
 #videos h2 {
@@ -148,5 +187,24 @@ h1 {
     align-items: center;
     height: 100vh;
     text-align: center;
-    color: red;
+    color: white;
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.github-link:hover {
+    color: #0366d6;
+}
+
+.github-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
 }

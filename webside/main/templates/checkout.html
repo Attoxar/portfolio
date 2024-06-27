@@ -1,26 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Checkout</h1>
-    <ul>
-        {% for item in order_items %}
-            <li>{{ item.product.name }} - Quantity: {{ item.quantity }} - Price: ${{ item.get_total_item_price }}</li>
-        {% endfor %}
-    </ul>
-    <p>Total Price: ${{ total_price }}</p>
+<div class="checkout-container">
+    <div class="checkout-content">
+        <h1>Checkout</h1>
+        <ul>
+            {% for item in order_items %}
+                <li>{{ item.product.name }} - Quantity: {{ item.quantity }} - Price: ${{ item.get_total_item_price }}</li>
+            {% endfor %}
+        </ul>
+        <p>Total Price: ${{ total_price }}</p>
 
-    <form method="post">
-        <!-- Payment Information -->
-        <label for="card_number">Card Number:</label><br>
-        <input type="text" id="card_number" name="card_number" required><br><br>
+        <form method="post">
+            <!-- Payment Information -->
+            <label for="card_number">Card Number:</label><br>
+            <input type="text" id="card_number" name="card_number" required><br><br>
 
-        <label for="expiry_date">Expiry Date:</label><br>
-        <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" required><br><br>
+            <label for="expiry_date">Expiry Date:</label><br>
+            <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" required><br><br>
 
-        <label for="cvv">CVV:</label><br>
-        <input type="text" id="cvv" name="cvv" required><br><br>
+            <label for="cvv">CVV:</label><br>
+            <input type="text" id="cvv" name="cvv" required><br><br>
 
-        {% csrf_token %}
-        <button type="submit">Pay Now</button>
-
-    </form>
+            {% csrf_token %}
+            <button type="submit">Pay Now</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

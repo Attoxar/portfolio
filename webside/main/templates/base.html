@@ -6,6 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Rage Gaming{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .github-link:hover {
+            color: #0366d6;
+        }
+
+        .github-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -39,30 +66,22 @@
         {% endblock %}
     </div>
     <script>
-       document.addEventListener('DOMContentLoaded', function() {
-        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-        dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                const dropdownMenu = this.nextElementSibling;
-                if (dropdownMenu.style.display === 'block') {
-                    dropdownMenu.style.display = 'none';
-                } else {
-                    dropdownMenu.style.display = 'block';
-                }
+           document.addEventListener('DOMContentLoaded', function() {
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const dropdownMenu = this.querySelector('.dropdown-menu');
+                const isVisible = dropdownMenu.style.display === 'block';
+                document.querySelectorAll('.dropdown-menu').forEach(menu => menu.style.display = 'none'); // Hide all dropdown menus
+                dropdownMenu.style.display = isVisible ? 'none' : 'block'; // Toggle visibility
             });
         });
 
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropdown-toggle')) {
-                const dropdowns = document.querySelectorAll('.dropdown-menu');
-                dropdowns.forEach(dropdown => {
-                    if (dropdown.style.display === 'block') {
-                        dropdown.style.display = 'none';
-                    }
-                });
-            }
-        }
+        // Hide dropdowns if clicked outside
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.dropdown-menu').forEach(menu => menu.style.display = 'none');
+        });
     });
     </script>
 </body>

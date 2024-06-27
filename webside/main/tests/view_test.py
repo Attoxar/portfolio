@@ -1,8 +1,13 @@
+import django
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .models import Product, Order, OrderItem
+from webside.main.models import Product, Order, OrderItem
 from django.core import mail
+import os
+os.environ['DJANGO_SETTINGS_MODULE'] = 'webside.webside.settings'
+
+django.setup()
 
 
 class ViewTests(TestCase):
