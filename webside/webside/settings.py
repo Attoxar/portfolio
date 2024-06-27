@@ -165,5 +165,5 @@ EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = "anthraxxer@yahoo.de"
-EMAIL_HOST_PASSWORD = "Hunterblade_2012"
+EMAIL_HOST_PASSWORD = "cpzdxhpclvnzumsy"
 DEFAULT_FROM_EMAIL = "anthraxxer@yahoo.de"

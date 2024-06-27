@@ -130,9 +130,10 @@ def contact_us(request):
         if form.is_valid():
             subject = form.cleaned_data["username"]
             message = form.cleaned_data["message"]
-            from_email = form.cleaned_data["email"]
-            recipient_list = ["andreas.blanck@ymail.com"]
-            send_mail(subject, message, from_email, recipient_list)
+            from_email = settings.DEFAULT_FROM_EMAIL
+            email = form.cleaned_data.get("email")
+            recipient_list = ["anthraxxer@yahoo.de"]
+            send_mail(subject="recived", message=message, from_email=from_email, recipient_list=recipient_list)
             return redirect("contact_success")
     else:
         form = ContactForm()
@@ -140,7 +141,7 @@ def contact_us(request):
 
 
 def contact_success(request):
-    return render(request, "contact_success.html")
+    return render(request, "success.html")
 
 
 @login_required

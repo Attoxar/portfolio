@@ -17,6 +17,6 @@ class ContactForm(forms.Form):
 
 class TargetForm(forms.Form):
     target = forms.CharField(label="Target", max_length=100)
-    intelligence_option = forms.ChoiceField(
-        choices=INTELLIGENCE_OPTIONS, label="Intelligence Gathering"
-    )
+    # intelligence_option = forms.ChoiceField(
+        # choices=INTELLIGENCE_OPTIONS, label="Intelligence Gathering"
+    # )
