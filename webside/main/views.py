@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from .models import Order, Product, OrderItem
@@ -93,10 +94,10 @@ def checkout(request):
     total_price = sum(item.get_total_item_price() for item in order_items)
 
     context = {
-        'order_items': order_items,
-        'total_price': total_price,
+        "order_items": order_items,
+        "total_price": total_price,
     }
-    return render(request, 'checkout.html', context)
+    return render(request, "checkout.html", context)
 
 
 @login_required
@@ -128,15 +129,31 @@ def contact_us(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
-            subject = form.cleaned_data["username"]
+            username = form.cleaned_data["username"]
             message = form.cleaned_data["message"]
+            sender_email = form.cleaned_data["email"]
             from_email = settings.DEFAULT_FROM_EMAIL
-            email = form.cleaned_data.get("email")
             recipient_list = ["anthraxxer@yahoo.de"]
-            send_mail(subject="recived", message=message, from_email=from_email, recipient_list=recipient_list)
+
+            # Include the sender's email in the message body
+            full_message = f"Message from {username} ({sender_email}):\n\n{message}"
+
+            # Create the email
+            email = EmailMessage(
+                subject="Received",
+                body=full_message,
+                from_email=from_email,
+                to=recipient_list,
+                # reply_to=[sender_email]  # Set the reply-to header to the sender's email
+            )
+
+            # Send the email
+            email.send()
+
             return redirect("contact_success")
     else:
         form = ContactForm()
+
     return render(request, "contact.html", {"form": form})
 
 
@@ -237,11 +254,11 @@ def detect_os(request):
 
 
 def about_me(request):
-    return render(request, 'about_me.html')
+    return render(request, "about_me.html")
 
 
 def multimedia(request):
     context = {
         # maybe puting in some kind of discription comments etc
     }
-    return render(request, 'multimedia.html', context)
+    return render(request, "multimedia.html", context)

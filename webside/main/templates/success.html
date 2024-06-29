@@ -2,9 +2,26 @@
 {% block content %}
 <head>
     <title>Contact Form Submitted</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            text-align: center;
+        }
+                }
+        .white-text {
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1>Thank you for contacting us!</h1>
-    <p>We'll get back to you shortly.</p>
+    <div class="container">
+        <div>
+            <h1>Thank you for contacting us!</h1>
+            <p>We'll get back to you shortly.</p>
+        </div>
+    </div>
 </body>
 {% endblock %}
