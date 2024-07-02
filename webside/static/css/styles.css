@@ -71,16 +71,19 @@ body {
 
 nav {
     background-color: #333;
-    overflow: visible;
+    overflow: invisible;
+    z-index: 1000;
 }
 
 .navbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex;
-}
 
+}
+.navbarul {
+   display: flex;
+}
 .navbar li {
     position: relative;
 }
@@ -108,7 +111,7 @@ nav {
     list-style: none;
     padding: 0;
     margin: 0;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .dropdown-menu li {
